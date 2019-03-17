@@ -1,0 +1,16 @@
+[
+{
+  "Id": 1,
+  "Name": "Regina Maria",
+  "Type": "Clinic",
+  "Address": "Str. Dorobantilor, nr. 32",
+  "Logo": "reginamaria.jpg"
+},
+{
+  "Id": 2,
+  "Name": "Medstar",
+  "Type": "Clinic",
+  "Address": "Bd. 21 Decembrie 1989, nr. 32",
+  "Logo": "medstar.jpg"
+}
+]

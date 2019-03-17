@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Regina Maria",
+    "type": "Clinic",
+    "address": "Str. Dorobantilor, nr. 32",
+    "logo": "reginamaria.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Medstar",
+    "type": "Clinic",
+    "address": "Bd. 21 Decembrie 1989, nr. 32",
+    "logo": "medstar.jpg"
+  }
+]
