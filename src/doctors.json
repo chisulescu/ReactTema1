@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Popescu Ioan",
+    "speciality": "Cardiologist",
+    "graduationYear": "2009",
+    "picture": "popescuI.jpg",
+    "mdId": "1"
+  },
+  {
+    "id": 2,
+    "name": "Pop Maria",
+    "speciality": "Dermatologist",
+    "graduationYear": "2012",
+    "picture": "popM.jpg",
+    "mdId": "1"
+  },
+  {
+    "id": 3,
+    "name": "Barb Valeriu",
+    "speciality": "Oncologist",
+    "graduationYear": "2009",
+    "picture": "barbV.jpg",
+    "mdId": "2"
+  },
+  {
+    "id": 4,
+    "name": "Neamt Ioana",
+    "speciality": "Hermatologist",
+    "graduationYear": "2005",
+    "picture": "neamtI.jpg",
+    "mdId": "2"
+  }
+]

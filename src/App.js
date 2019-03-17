@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import AppNavbar from './Navbar'
+import Jumbotron from './Jumbotron'
+import MedicalFacilityList from './MedicalFacilityList'
+import SlideShow from './SlideShow'
+import Home from './Home'
+import DoctorsList from './DoctorsList'
+import PropTypes from 'prop-types'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route path='/' exact={true} component={Home}/>
+                    <Route path='/facilities' exact={true} component={MedicalFacilityList}/>
+                    <Route path='/slides' exact={true} component={SlideShow}/>
+                    <Route path='/doctors' exact={true} component={DoctorsList}/>
+                    {/*<Route path='/facility/:id' exact={true} component={BookEdit}/>*/}
+                </Switch>
+            </Router>
+        )
+    }
+
 }
 
 export default App;
