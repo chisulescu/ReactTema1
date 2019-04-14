@@ -30,5 +30,21 @@
     "graduationYear": "2005",
     "picture": "neamtI.jpg",
     "mdId": "2"
+  },
+  {
+    "id": 5,
+    "name": "Neamt Maria",
+    "speciality": "Oncologist",
+    "graduationYear": "2003",
+    "picture": "neamtM.jpg",
+    "mdId": "2"
+  },
+  {
+    "id": 6,
+    "name": "Neamt Maria",
+    "speciality": "Oncologist",
+    "graduationYear": "2003",
+    "picture": "neamtM.jpg",
+    "mdId": "1"
   }
 ]

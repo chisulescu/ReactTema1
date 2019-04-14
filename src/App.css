@@ -1,18 +1,29 @@
 .container, .jumbotron .container {
   max-width: 768px;
+  width: 80%;
 }
 .container, .container-fluid {
   margin-top: 20px;
+  width: 60%;
 }
+
 .navbar {
   margin-bottom: 0px;
   color: white;
-  background-color: red;
+  background-color: #DF0101;
 }
 .jumbotron {
   background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0.7;
 }
+
+.logo {
+  width:100vw;
+  height:100vh;
+  display:table-cell;
+  vertical-align:middle;
+  text-align:center;
+}
+
 
 .slide-container {
   width: 70%;

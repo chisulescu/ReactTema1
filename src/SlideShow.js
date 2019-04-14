@@ -16,7 +16,7 @@ class SlideShow extends React.Component {
         };
 
         return (
-            <Slide {...properties}>
+            <Slide {...properties} style={{height: "100%"}}>
                 <div className="each-slide">
                     <div >
                         <img src={require('./images/lifechoices.jpg')} alt={"Logo"}/>

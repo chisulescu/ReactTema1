@@ -1,0 +1,25 @@
+{
+  "titleDoctors": "Doctori",
+  "speciality": "Specializare",
+  "name": "Nume",
+  "graduation": "An absolvire",
+  "titleMedical": "Unitati medicale",
+  "address": "Adresa",
+  "type": "Tip",
+  "doctors": "Doctori",
+  "jumboTitle": "Bine ati venit!",
+  "jumboText": "Acest site contine o lista cu cele mai importante unitati medicale din Cluj-Napoca si doctorii care lucreaza acolo.",
+  "jumboBtn": "Vezi mai multe",
+  "home": "Acasa",
+  "facilities": "Unitati",
+  "english": "EN",
+  "romanian": "RO",
+  "logout": "DELOGARE",
+  "titleUserPage": "Pagina profil",
+  "affliction": "Afectiune",
+  "edit": "Aplica",
+  "user": "Utilizator",
+  "commentMessage": "Fii primul care comenteaza",
+  "comment": "Comenteaza"
+
+}

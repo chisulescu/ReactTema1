@@ -1,0 +1,25 @@
+{
+  "titleDoctors": "Doctors",
+  "speciality": "Medical Speciality",
+  "name": "Name",
+  "graduation": "Graduation Year",
+  "titleMedical": "Medical facilities",
+  "address": "Address",
+  "type": "Type",
+  "doctors": "Doctors",
+  "jumboTitle": "Welcome!",
+  "jumboText": "This site contains a list of all the most important medical facilities in Cluj-Napoca and the doctors that work there.",
+  "jumboBtn": "See more",
+  "home": "Home",
+  "facilities": "Facilities",
+  "english": "EN",
+  "romanian": "RO",
+  "titleUserPage": "Profile page",
+  "logout": "LOGOUT",
+  "affliction": "Affliction",
+  "edit": "Apply",
+  "user": "User,",
+  "commentMessage": "Be the first to comment",
+  "comment": "Comment"
+
+}

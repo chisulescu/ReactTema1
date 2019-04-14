@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "latest",
+    "babel-loader": "^8.0.5",
     "bootstrap": "^4.3.1",
+    "image-to-base64": "^2.0.1",
     "jquery": "^3.3.1",
     "mdbreact": "^4.11.0",
     "prop-types": "latest",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-file-base64": "^1.0.3",
+    "react-images-upload": "^1.2.6",
     "react-router-dom": "latest",
     "react-scripts": "2.1.8",
     "react-slideshow-image": "^1.1.2",
@@ -20,6 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8000",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -32,7 +38,12 @@
   "devDependencies": {
     "@material-ui/icons": "^3.0.2",
     "fdmg-ts-react-image-button": "^1.0.23",
+    "react-alert": "^5.4.0",
+    "react-alert-template-basic": "^1.0.0",
     "react-image-gallery": "^0.8.14",
+    "react-native": "^0.59.4",
+    "react-star-rating-component": "^1.4.1",
+    "semantic-ui-react": "^0.86.0",
     "universal-cookie": "^3.0.7"
   }
 }
