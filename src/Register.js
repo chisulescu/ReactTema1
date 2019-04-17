@@ -44,26 +44,32 @@ class Register extends Component {
         }).then(results => {
             return results.json();
         }).then(data => {
-            if(data.message === "The given data was invalid.")
-            {
-                if(data.errors.email !== undefined)
+            if(data.message ) {
+                if (data.errors) {
+                    if (data.errors.email !== undefined)
+                        this.setState({
+                            error: data.errors.email,
+                            loading: false
+                        });
+                    if (data.errors.password !== undefined)
+                        this.setState({
+                            error: data.errors.password,
+                            loading: false
+                        });
+                }
+                else {
                     this.setState({
-                        error: data.errors.email,
+                        error: data.message,
                         loading: false
                     });
-                if(data.errors.password !== undefined)
-                    this.setState({
-                        error: data.errors.password,
-                        loading: false
-                    });
+                }
             }
-
             else {
                 this.setState({
                     error: 'User registered',
                     loading: false
                 });
-                this.props.history.push('/');
+                this.props.history.push('/login');
 
 
             }

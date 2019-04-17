@@ -37,25 +37,35 @@ class UserPage extends Component {
         fetch(`api/user/` + userId, {
             method: 'GET',
             headers: {
+                'Accept': 'application/json',
                 'Access-Control-Allow-Origin': '*',
             }})
-            .then(response => {
-                const contentType = response.headers.get("content-type");
-                console.log("fetch");
-                this.setState({ isLoading: false});
-                if (contentType && contentType.indexOf("application/json") !== -1) {
-                    return response.json()
-                        .then(data => this.setState({profile: data, isLoading: false}));
-                } else {
-
-                    return response.text().then(text => {
-
-                        console.log(text);
-                        this.props.history.push('/login');
-                    });
-
+            .then(response =>  response.json())
+            .then(data => {
+                if(data.error) {
+                    this.props.history.push('/login');
                 }
-            });
+                else {
+                    this.setState({profile: data, isLoading: false});
+                }
+            })
+        // {
+        //         const contentType = response.headers.get("content-type");
+        //         console.log("fetch");
+        //         this.setState({ isLoading: false});
+        //         if (contentType && contentType.indexOf("application/json") !== -1) {
+        //             return response.json()
+        //                 .then(data => this.setState({profile: data, isLoading: false}));
+        //         } else {
+        //
+        //             return response.text().then(text => {
+        //
+        //                 console.log(text);
+        //                 this.props.history.push('/login');
+        //             });
+        //
+        //         }
+        //     });
     }
 
     getFiles(files) {

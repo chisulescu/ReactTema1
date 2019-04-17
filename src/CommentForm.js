@@ -68,27 +68,41 @@ export default class CommentForm extends Component {
         fetch(`/api/comments/`, {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
+                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(comment),
         })
-            .then(res => res.json())
-            .then(res => {
-                if (res.error) {
-                    this.setState({ loading: false, error: res.error });
+            .then(res =>{
+                const contentType = res.headers.get("content-type");
+                console.log("fetch");
+                this.setState({ isLoading: false});
+                if (contentType && contentType.indexOf("application/json") !== -1) {
+                    return res.json()
                 } else {
-                    // add time return from api and push comment to parent state
-                    comment.name = res.name;
-                    this.props.addComment(comment);
+                    return res.text().then(text => {
 
-                    // clear the message box
-                    this.setState({
-                        loading: false,
-                        comment: { ...comment, message: "" }
-                    });
+                        console.log(text);
+                        //this.props.history.push('/');
+                        }
+                    )
                 }
             })
+                .then(res => {
+                    if (res.error) {
+                        this.setState({ loading: false, error: res.error });
+                    } else {
+                    // add time return from api and push comment to parent state
+                        comment.name = res.name;
+                        this.props.addComment(comment);
+
+                    // clear the message box
+                        this.setState({
+                            loading: false,
+                            comment: { ...comment, message: "" }
+                        });
+                    }
+                })
             .catch(err => {
                 this.setState({
                     error: "Something went wrong while submitting form.",

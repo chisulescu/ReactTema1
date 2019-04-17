@@ -24,6 +24,9 @@ class DoctorsList extends React.Component {
         fetch(`/api/doctors/medicalUnit/` + medId)
             .then(response => response.json())
             .then(data => this.setState({doctors: data, isLoading: false}));
+        if(cookies.get("doctor_id")) {
+            this.seeComments(cookies.get("doctor_id"))
+        }
     }
 
     seeComments(id) {

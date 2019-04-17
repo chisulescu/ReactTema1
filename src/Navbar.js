@@ -45,13 +45,14 @@ export default class AppNavbar extends React.Component {
         if(cookies.get('language')) {
            language = cookies.get('language');
         }
-        let {home, facilities, doctors, english, romanian, logout, user} = require("./"+language);
+        let {home, facilities, doctors, english, romanian, logout, user, login} = require("./"+language);
 
         return <Navbar dark expand="md">
             <NavbarBrand tag={Link} to="/">{home}</NavbarBrand>
             <NavbarBrand tag={Link} to="/facilities">{facilities}</NavbarBrand>
             <NavbarBrand tag={Link} to="/doctors">{doctors}</NavbarBrand>
             <NavbarBrand tag={Link} to="/user">{user}</NavbarBrand>
+            {/*<NavbarBrand tag={Link} to="/login">{login}</NavbarBrand>*/}
             {/*<NavbarToggler onClick={this.toggle}>here</NavbarToggler>*/}
             <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>

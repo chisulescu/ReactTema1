@@ -18,8 +18,9 @@
   "logout": "LOGOUT",
   "affliction": "Affliction",
   "edit": "Apply",
-  "user": "User,",
+  "user": "User",
   "commentMessage": "Be the first to comment",
-  "comment": "Comment"
+  "comment": "Comment",
+  "login": "Login"
 
 }
