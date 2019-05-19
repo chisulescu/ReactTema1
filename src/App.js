@@ -10,9 +10,21 @@ import Register from './Register'
 import DoctorsList from './DoctorsList'
 import UserPage from './UserPage'
 import PropTypes from 'prop-types'
+import AdminLogin from './AdminLogin'
+import axios from 'axios'
+import MedicalFacilityForm from './MedicalFacilityForm'
+import AdminMenu from "./AdminMenu"
+import DoctorForm from "./DoctorForm"
+import UsersListAdmin from "./UsersListAdmin"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Dashboard from "./Dashboard";
+import MapContainer from "./MapContainer";
 
 class App extends Component {
+
+    componentWillMount() {
+        axios.defaults.baseURL = 'http://127.0.0.1:8001/api';
+    }
 
     render() {
         return (
@@ -25,7 +37,13 @@ class App extends Component {
                     <Route path='/login' exact={true} component={Login}/>
                     <Route path='/register' exact={true} component={Register}/>
                     <Route path='/user' exact={true} component={UserPage}/>
-                    {/*<Route path='/facility/:id' exact={true} component={BookEdit}/>*/}
+                    <Route path='/adminLogin' exact={true} component={AdminLogin}/>
+                    <Route path='/adminMenu' exact={true} component={AdminMenu}/>
+                    <Route path='/adminMedical' exact={true} component={MedicalFacilityForm}/>
+                    <Route path='/adminDoctor' exact={true} component={DoctorForm}/>
+                    <Route path='/adminUsers' exact={true} component={UsersListAdmin}/>
+                    <Route path='/dashboard' exact={true} component={Dashboard}/>
+                    <Route path='/map' exact={true} component={MapContainer}/>
                 </Switch>
             </Router>
         )

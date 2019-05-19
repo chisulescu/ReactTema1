@@ -1,18 +1,16 @@
 import React from 'react';
 import './App.css';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import Navbar from './Navbar'
 import Cookies from "universal-cookie";
-import CommentForm from './CommentForm'
-import MapContainer from './MapContainer'
+import { Link } from 'react-router-dom';
+import axios from "axios";
 
-
-class MedicalFacilityList extends React.Component {
+class MedicalFacilityListAdmin extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {medicalFacilities: [], isLoading: true}
-        this.seeDoctors = this.seeDoctors.bind(this);
+        this.deleteClinic = this.deleteClinic.bind(this);
 
     }
 
@@ -24,39 +22,32 @@ class MedicalFacilityList extends React.Component {
         if(cookies.get('language')) {
             language = cookies.get('language');
         }
-        fetch(`/api/medicalUnits`)
-            .then(response =>{
-                const contentType = response.headers.get("content-type");
-                if (contentType && contentType.indexOf("application/json") !== -1) {
-                    return response.json()
-                        .then(data => this.setState({medicalFacilities: data, isLoading: false}));
-                }
-                else {
 
-                    return response.text().then(text => {
-                        console.log(text);
-                        this.props.history.push('/');
-                    });
-
+        const token = cookies.get('token');
+        // console.log(`Token ${token}`);
+        axios
+            .get(`/medicalUnits/`, {
+                headers: {
+                    Authorization: `Token ${token}`
                 }
             })
-
-            // .catch(() => this.props.history.push('/'));
-        // var data = require('./medicalFacilities.json');
-        // if (language === 'ro.json')
-        //     data = require('./unitatiMedicale.json');
-        // console.log(data);
-        // this.setState({medicalFacilities: data, isLoading: false})
+            .then(response => this.setState({medicalFacilities: response.data.medicalUnits, isLoading: false}))
+            .catch(error => console.log(error));
     }
 
-    async seeDoctors(id, hospitalName) {
+    async deleteClinic(id) {
 
         const cookies = new Cookies();
-        cookies.remove('medId');
-        cookies.set('medId',id);
-        cookies.remove('hospital');
-        cookies.set('hospital', hospitalName);
-        this.props.history.push(`/doctors`);
+        const token = cookies.get('token');
+        // console.log(`Token ${token}`);
+        axios
+            .delete(`/medicalUnits/`+id + '/', {
+                headers: {
+                    Authorization: `Token ${token}`
+                }
+            })
+            .catch(error => console.log(error));
+        window.location.reload();
     };
 
     render() {
@@ -71,16 +62,6 @@ class MedicalFacilityList extends React.Component {
         console.log("limba "+ language);
         let { titleMedical, name, address, type, doctors} = require('./' + language);
 
-        // if (language === 'ro') {
-        //      title= 'Unitati medicale';
-        //      name= 'Nume';
-        //      address= 'Adresa';
-        //      type= 'Tip';
-        //      doctors= 'Doctori';
-        //
-        //
-        // }
-
         if (isLoading) {
             return <div id="app">
                 <div  className="logo">
@@ -90,7 +71,11 @@ class MedicalFacilityList extends React.Component {
         }
         console.log(medicalFacilities);
         const medicalFacilityList = medicalFacilities.map(medicalFacility => {
-            const encodedData = medicalFacility.logoBase64;
+            let encodedData = decodeURIComponent(medicalFacility.logobase64);
+            if(encodedData[0] === '9') {
+                encodedData = '/' + encodedData;
+            }
+            const editLink = '/adminMedical?type=edit&id=' + medicalFacility.id;
             console.log(`data:image/jpg;base64,${encodedData}`);
             return <tr key={medicalFacility.id}>
                 <td style={styles} ><img width={"200"} height={'117'} src={ `data:image/jpeg;base64,${encodedData}`} alt={"Logo"}/></td>
@@ -101,7 +86,8 @@ class MedicalFacilityList extends React.Component {
                 {/*<td style={{whiteSpace: 'nowrap'}}>{medicalFacility.}</td>*/}
                 <td style={styles}>
                     <ButtonGroup >
-                        <Button  size="bg" color="danger" onClick={() => this.seeDoctors(medicalFacility.id, medicalFacility.name)}>{doctors}</Button>
+                        <Button  size="bg" color="danger" onClick={() => this.deleteClinic(medicalFacility.id)}>Delete</Button>
+                        <Button  size="bg" color="danger" tag={Link} to={editLink}>Edit</Button>
                         {/*<Button size="sm" color="danger" onClick={() => this.remove(book.id)}>Delete</Button>*/}
                     </ButtonGroup>
                 </td>
@@ -111,9 +97,12 @@ class MedicalFacilityList extends React.Component {
         let Background = "geometric.jpg";
         return (
             <div style={ { height: "100%"}}>
-                <Navbar/>
+                {/*<Navbar/>*/}
                 <Container fluid style={{width: "90%", backgroundColor: "white"}}>
                     <h3 style={{"padding-top": "20px"}}>{titleMedical}</h3>
+                    <div className="float-right">
+                        <Button  size="bg" color="danger" tag={Link} to="/adminMedical?type=add">Add clinic</Button>
+                    </div>
                     <Table className="mt-4">
                         <thead>
                         <tr>
@@ -128,7 +117,6 @@ class MedicalFacilityList extends React.Component {
                         {medicalFacilityList}
                         </tbody>
                     </Table>
-                    <MapContainer/>
                 </Container>
             </div>
         );
@@ -136,4 +124,4 @@ class MedicalFacilityList extends React.Component {
 }
 
 
-export default MedicalFacilityList;
+export default MedicalFacilityListAdmin;

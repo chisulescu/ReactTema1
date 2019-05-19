@@ -52,6 +52,7 @@ export default class AppNavbar extends React.Component {
             <NavbarBrand tag={Link} to="/facilities">{facilities}</NavbarBrand>
             <NavbarBrand tag={Link} to="/doctors">{doctors}</NavbarBrand>
             <NavbarBrand tag={Link} to="/user">{user}</NavbarBrand>
+            <NavbarBrand tag={Link} to="/dashboard">Dashboard</NavbarBrand>
             {/*<NavbarBrand tag={Link} to="/login">{login}</NavbarBrand>*/}
             {/*<NavbarToggler onClick={this.toggle}>here</NavbarToggler>*/}
             <Collapse isOpen={this.state.isOpen} navbar>

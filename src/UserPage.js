@@ -19,7 +19,8 @@ class UserPage extends Component {
         this.state = {
             profile: this.emptyItem,
             email: "",
-            isLoading: true
+            isLoading: true,
+            afflictions: []
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -108,6 +109,10 @@ class UserPage extends Component {
     }
 
     render() {
+         const afflictions = require("./afflictions.json");
+        let afflictionsSelect = afflictions.map(affliction => {
+            return <option key={affliction.text} value={affliction.text} >{affliction.text}</option>;
+        });
         const {profile, email, isLoading} = this.state;
         //console.log(profile);
         if (isLoading) {
@@ -123,6 +128,7 @@ class UserPage extends Component {
             language = cookies.get('language');
         }
         let {titleUserPage, name, affliction, edit} = require('./' + language);
+
         return <div style={{"background-size": "cover", "height": "100%"}}>
             <Navbar/>
             <Container>
@@ -139,8 +145,13 @@ class UserPage extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Label for="affliction"><b>{affliction}</b></Label>
-                        <Input type="text" name="affliction" id="affliction" value={profile.affliction}
-                               onChange={this.handleChange} autoComplete="affliction" style={{width: "370px"}}/>
+                        <div> </div>
+                        <select  name="affliction" id="affliction" value={profile.affliction}
+                                           onChange={this.handleChange} autoComplete="affliction" style={{height: "40px", width: "370px"}}>
+                            {afflictionsSelect}
+                        </select>
+                        {/*<Input type="text" name="affliction" id="affliction" value={profile.affliction}*/}
+                               {/*onChange={this.handleChange} autoComplete="affliction" style={{width: "370px"}}/>*/}
                     </FormGroup>
                     {/*<FormGroup>*/}
                     {/*<Label for="password"><b>Password</b></Label>*/}
